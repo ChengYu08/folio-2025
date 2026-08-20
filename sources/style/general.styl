@@ -56,6 +56,24 @@ html
     @media only screen and (max-width 440px)
         font-size 16px;
 
+.site-footer
+    position fixed
+    right 0
+    bottom 12px
+    left 0
+    z-index 2
+    text-align center
+    font-size 12px
+    line-height 1
+
+    a
+        color alpha(#ffffff, 0.7)
+        text-decoration none
+
+        html:not(.is-mode-touch) &:hover
+            color #ffffff
+            text-decoration underline
+
 ul
 ol
     padding-left 25px
@@ -388,4 +406,3 @@ html:not(.is-server-offline) .offline-element
 
 html:not(.is-server-online) .online-element
     display none !important
-
