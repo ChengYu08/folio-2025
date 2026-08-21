@@ -18,7 +18,7 @@ export default {
     },
     build:
     {
-        outDir: '../dist', // Output in the dist/ folder
+        outDir: '../yuyiyi.asia', // Output in the yuyiyi.asia/ folder
         emptyOutDir: true, // Empty the folder first
         sourcemap: false // Add sourcemap
     },
