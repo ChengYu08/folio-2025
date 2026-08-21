@@ -1,6 +1,7 @@
 import * as THREE from 'three/webgpu'
 import { Game } from '../../Game.js'
 import { InteractivePoints } from '../../InteractivePoints.js'
+import { t } from '../../i18n.js'
 import gsap from 'gsap'
 import labData from '../../../data/lab.js'
 import { TextCanvas } from '../../TextCanvas.js'
@@ -90,7 +91,7 @@ export class LabArea extends Area
     {
         this.interactivePoint = this.game.interactivePoints.create(
             this.references.items.get('interactivePoint')[0].position,
-            'Lab',
+            t('world.lab'),
             InteractivePoints.ALIGN_RIGHT,
             InteractivePoints.STATE_CONCEALED,
             () =>

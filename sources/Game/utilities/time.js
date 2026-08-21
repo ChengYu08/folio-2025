@@ -1,3 +1,5 @@
+import { t } from '../i18n.js'
+
 export const timeToRaceString = (time) =>
 {
     const minutes = Math.floor(time / 60)
@@ -13,17 +15,17 @@ export function timeToReadableString(time, withHours = true, widthMinutes = true
     const minutes = Math.floor((time % 3600) / 60)
     const seconds = Math.floor((time % 60))
     // const milliseconds = (time * 1000) % 1000
-    
+
     const parts = []
 
     if(hours > 0 && withHours)
-        parts.push(`${hours}h`)
+        parts.push(`${hours}${t('time.hour')}`)
 
     if((hours > 0 || minutes > 0) && widthMinutes)
-        parts.push(`${minutes}m`)
+        parts.push(`${minutes}${t('time.minute')}`)
 
     if((hours > 0 || minutes > 0 || seconds > 0) && withSeconds)
-        parts.push(`${seconds}s`)
+        parts.push(`${seconds}${t('time.second')}`)
 
     return parts.join(' ')
 }

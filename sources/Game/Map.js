@@ -1,5 +1,6 @@
 import { clamp } from 'three/src/math/MathUtils.js'
 import { Game } from './Game.js'
+import { t } from './i18n.js'
 
 export class Map
 {
@@ -41,18 +42,18 @@ export class Map
     {
         this.locations = {}
         this.locations.items = [
-            { name: 'Achievements', respawnName: 'achievements', offset: { x: 0, y: -0.01 } },
-            { name: 'Altar', respawnName: 'altar', offset: { x: 0, y: -0.05 } },
-            { name: 'Behind<br /> the scene', respawnName: 'behindTheScene', offset: { x: 0.01, y: 0 } },
-            { name: 'Bowling', respawnName: 'bowling', offset: { x: -0.08, y: 0.03 } },
-            { name: 'Career', respawnName: 'career', offset: { x: 0, y: -0.06 } },
-            { name: 'Circuit', respawnName: 'circuit', offset: { x: -0.08, y: -0.05 } },
-            { name: 'Cookie', respawnName: 'cookie', offset: { x: -0.02, y: -0.01 } },
-            { name: 'Lab', respawnName: 'lab', offset: { x: -0.03, y: 0 } },
-            { name: 'Landing', respawnName: 'landing', offset: { x: 0.02, y: 0 } },
-            { name: 'Projects', respawnName: 'projects', offset: { x: 0, y: -0.02 } },
-            { name: 'Social', respawnName: 'social', offset: { x: -0.01, y: -0.04 } },
-            { name: 'Time Machine', respawnName: 'timeMachine', offset: { x: 0, y: 0 } },
+            { name: t('map.achievements'), respawnName: 'achievements', offset: { x: 0, y: -0.01 } },
+            { name: t('map.altar'), respawnName: 'altar', offset: { x: 0, y: -0.05 } },
+            { name: t('map.behind'), respawnName: 'behindTheScene', offset: { x: 0.01, y: 0 } },
+            { name: t('map.bowling'), respawnName: 'bowling', offset: { x: -0.08, y: 0.03 } },
+            { name: t('map.career'), respawnName: 'career', offset: { x: 0, y: -0.06 } },
+            { name: t('map.circuit'), respawnName: 'circuit', offset: { x: -0.08, y: -0.05 } },
+            { name: t('map.cookie'), respawnName: 'cookie', offset: { x: -0.02, y: -0.01 } },
+            { name: t('map.lab'), respawnName: 'lab', offset: { x: -0.03, y: 0 } },
+            { name: t('map.landing'), respawnName: 'landing', offset: { x: 0.02, y: 0 } },
+            { name: t('map.projects'), respawnName: 'projects', offset: { x: 0, y: -0.02 } },
+            { name: t('map.social'), respawnName: 'social', offset: { x: -0.01, y: -0.04 } },
+            { name: t('map.timeMachine'), respawnName: 'timeMachine', offset: { x: 0, y: 0 } },
         ]
 
         for(const item of this.locations.items)

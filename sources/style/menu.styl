@@ -245,6 +245,11 @@
         bottom 100%
         gap 3px
 
+        // Hidden menu items (e.g. Circuit & Whispers panels): collapse out of
+        // the flex row so the remaining items reflow.
+        .item.is-hidden
+            display none
+
         @media only screen and (orientation portrait)
             left 10px
 

@@ -2,6 +2,7 @@ import * as THREE from 'three/webgpu'
 import { color, float, Fn, instancedArray, mix, normalWorld, positionGeometry, step, texture, uniform, uv, vec2, vec3, vec4 } from 'three/tsl'
 import { Inputs } from '../../Inputs/Inputs.js'
 import { InteractivePoints } from '../../InteractivePoints.js'
+import { t } from '../../i18n.js'
 import { Area } from './Area.js'
 import gsap from 'gsap'
 import { MeshDefaultMaterial } from '../../Materials/MeshDefaultMaterial.js'
@@ -42,7 +43,7 @@ export class LandingArea extends Area
         // Interactive point
         const interactivePoint = this.game.interactivePoints.create(
             this.references.items.get('kioskInteractivePoint')[0].position,
-            'Map',
+            t('world.landing.map'),
             InteractivePoints.ALIGN_RIGHT,
             InteractivePoints.STATE_CONCEALED,
             () =>
@@ -76,7 +77,7 @@ export class LandingArea extends Area
         // Interactive point
         const interactivePoint = this.game.interactivePoints.create(
             this.references.items.get('controlsInteractivePoint')[0].position,
-            'Controls',
+            t('world.landing.controls'),
             InteractivePoints.ALIGN_RIGHT,
             InteractivePoints.STATE_CONCEALED,
             () =>

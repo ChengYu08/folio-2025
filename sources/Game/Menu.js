@@ -2,7 +2,6 @@ import { Events } from './Events.js'
 import { Game } from './Game.js'
 import { Inputs } from './Inputs/Inputs.js'
 import { Tabs } from './Tabs.js'
-import { CircuitArea } from './World/Areas/CircuitArea.js'
 
 export class Menu
 {
@@ -58,10 +57,7 @@ export class Menu
         {
             event.preventDefault()
 
-            if(this.game.world.areas?.circuit?.state === CircuitArea.STATE_RUNNING || this.game.world.areas?.circuit?.state === CircuitArea.STATE_STARTING)
-                this.open('circuit')
-            else
-                this.open()
+            this.open()
         })
         element.addEventListener('keydown', (event) =>
         {
@@ -130,7 +126,11 @@ export class Menu
                 this.default = item
         }
 
-        const keys = [...this.items.keys()]
+        // Build the prev/next navigation chain over visible items only, so
+        // hidden panels (e.g. Circuit & Whispers) are skipped by gamepad L/R.
+        const keys = [...this.items.values()]
+            .filter(item => !item.navigationElement.classList.contains('is-hidden'))
+            .map(item => item.name)
 
         for(let i = 0; i < keys.length; i++)
         {
@@ -184,6 +184,10 @@ export class Menu
 
         // Not found
         if(!item)
+            return
+
+        // Hidden panels (e.g. Circuit & Whispers) are never openable.
+        if(item.navigationElement.classList.contains('is-hidden'))
             return
 
         // Same

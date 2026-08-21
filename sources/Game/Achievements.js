@@ -1,6 +1,7 @@
 import * as THREE from 'three/webgpu'
 import achievementsData from '../data/achievements.js'
 import { Game } from './Game.js'
+import { t } from './i18n.js'
 import { timeToReadableString } from './utilities/time.js'
 import { uniform } from 'three/tsl'
 import { Events } from './Events.js'
@@ -521,17 +522,17 @@ export class Achievements
 
             if(clickCount === 1)
             {
-                button.textContent = 'Are you sure?'
+                button.textContent = t('achievements.resetConfirm1')
             }
 
             else if(clickCount === 2)
             {
-                button.textContent = 'Definitely?'
+                button.textContent = t('achievements.resetConfirm2')
             }
 
             else if(clickCount === 3)
             {
-                button.textContent = 'Done!'
+                button.textContent = t('achievements.resetConfirm3')
                 clickCount = 0
                 this.reset()
             }
@@ -542,7 +543,7 @@ export class Achievements
             event.preventDefault()
             clickCount = 0
 
-            button.textContent = 'Reset achievements'
+            button.textContent = t('achievements.reset')
         })
     }
 

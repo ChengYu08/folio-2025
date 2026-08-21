@@ -1,11 +1,16 @@
 import labData from './lab.js'
 import projectsData from './projects.js'
+import { isZh } from '../Game/i18n.js'
 
-export default
+// Tuples: [id, title, description(html), count, unique]. Only title (index 1)
+// and description (index 2) are translated; id/count/unique stay. Translations
+// are indexed (not keyed by the English title) so curly-vs-straight apostrophe
+// differences in the source never break matching.
+const en =
 [
     [
         'landingLeave',
-        'I’m going on an adventure!',
+        'I\'m going on an adventure!',
         'Get out of the landing area.',
         1
     ],
@@ -236,3 +241,50 @@ export default
         1
     ],
 ]
+
+// Index-aligned [title, description] translations for zh.
+const zh =
+[
+    [ '我要去冒险了！', '离开登陆点区域。' ],
+    [ '旅行者', '游览所有区域。' ],
+    [ '但你能修好 WiFi 吗？', '查看<strong>作品</strong>区域里的所有项目。' ],
+    [ '我自己也算个科学家', '查看<strong>实验室</strong>区域里的所有项目。' ],
+    [ '醒醒，烤起来', '接受 <strong>1</strong> 块饼干。' ],
+    [ '赚点面团', '接受 <strong>10</strong> 块饼干。' ],
+    [ '现在烤得正欢', '接受 <strong>100</strong> 块饼干。' ],
+    [ '饼干点击器', '接受 <strong>1000</strong> 块饼干。' ],
+    [ '重要的是传递信息', '发布一条留言。' ],
+    [ '海底世界', '去和鱼儿交个朋友。' ],
+    [ '乌龟', '四脚朝天。' ],
+    [ '牙齿着地', '做一个前空翻并四轮着地。' ],
+    [ '信仰之翻', '做一个后空翻并四轮着地。' ],
+    [ '低趴车', '使用车辆悬挂。' ],
+    [ '鸣笛', '像你的法国司机那样对我鸣笛。' ],
+    [ '大爆炸凶杀神·炸药', '炸毁所有炸药箱。' ],
+    [ '直冲云霄', '达到 <strong>15 米</strong>高。' ],
+    [ '管他呢，哥们。去打保龄球吧', '完成一次全中。' ],
+    [ '请勿打扰', '把茅房撞倒。' ],
+    [ '参与奖', '完成一场比赛。' ],
+    [ '嗖——！', '在 <strong>30 秒</strong>内完成一场比赛。' ],
+    [ '早起的鸟儿有虫吃', '登上排行榜。' ],
+    [ '你不是还有活要干吗？', '一口气在这里度过一整个昼夜循环。' ],
+    [ '蹒跚学步', '行驶 1 公里。' ],
+    [ '我们到了吗？', '行驶 10 公里。' ],
+    [ '亲爱的，我回来啦！', '行驶 100 公里。' ],
+    [ '献给混沌之神', '把自己献祭进祭坛。' ],
+    [ '见证我！', '见证一次大灾变。' ],
+    [ '你想堆个雪人吗？', '见证下雪天气。' ],
+    [ '我在雨中歌唱', '见证下雨天气。' ],
+    [ '1.21 吉瓦！', '被闪电击中。' ],
+    [ '玩家直觉', '你期望什么？宝藏吗？' ],
+    [ '你是我唯一的粉丝', '召唤一个粉丝。' ],
+    [ '收拾你的房间', '把一切放回原样。' ],
+    [ '革命！', '把那座雕像推倒。' ],
+    [ '上上下下……', '你知道剩下的。' ],
+    [ '这不是 bug，这是特性', '打开调试界面。' ],
+    [ '黑客', '这个成就无法达成。' ],
+]
+
+export default isZh
+    ? en.map((entry, index) => [ entry[0], zh[index][0], zh[index][1], entry[3], entry[4] ])
+    : en

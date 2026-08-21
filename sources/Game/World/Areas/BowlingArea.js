@@ -1,6 +1,7 @@
 import * as THREE from 'three/webgpu'
 import { Game } from '../../Game.js'
 import { InteractivePoints } from '../../InteractivePoints.js'
+import { t } from '../../i18n.js'
 import { clamp, lerp, remapClamp } from '../../utilities/maths.js'
 import gsap from 'gsap'
 import { color, float, Fn, instancedBufferAttribute, instanceIndex, max, min, mix, positionGeometry, sin, step, texture, uniform, uv, vec2, vec3, vec4 } from 'three/tsl'
@@ -226,7 +227,7 @@ export class BowlingArea extends Area
     {
         this.restartInteractivePoint = this.game.interactivePoints.create(
             this.references.items.get('restartInteractivePoint')[0].position,
-            'Restart',
+            t('world.bowling.restart'),
             InteractivePoints.ALIGN_RIGHT,
             InteractivePoints.STATE_HIDDEN,
             () =>
@@ -386,7 +387,7 @@ export class BowlingArea extends Area
         // Interactive point
         this.game.interactivePoints.create(
             this.references.items.get('bumpersInteractivePoint')[0].position,
-            'Bumpers',
+            t('world.bowling.bumpers'),
             InteractivePoints.ALIGN_LEFT,
             InteractivePoints.STATE_CONCEALED,
             () =>
@@ -479,7 +480,7 @@ export class BowlingArea extends Area
         // Interactive point
         this.game.interactivePoints.create(
             this.references.items.get('jukeboxInteractivePoint')[0].position,
-            'Change song',
+            t('world.bowling.changeSong'),
             InteractivePoints.ALIGN_LEFT,
             InteractivePoints.STATE_CONCEALED,
             () =>

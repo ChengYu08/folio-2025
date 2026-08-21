@@ -1,5 +1,6 @@
 import * as THREE from 'three/webgpu'
 import { Game } from './Game.js'
+import { CJK_FONT } from './i18n.js'
 import { color, distance, float, Fn, max, min, mix, mul, normalWorld, positionWorld, step, texture, uniform, uv, vec2, vec3, vec4 } from 'three/tsl'
 import gsap from 'gsap'
 import { Inputs } from './Inputs/Inputs.js'
@@ -213,7 +214,7 @@ export class InteractivePoints
         const textPaddingLeft = align === InteractivePoints.ALIGN_LEFT ? 60 : 12
         const textPaddingRight = align === InteractivePoints.ALIGN_LEFT ? 12 : 60
         const textOffsetVertical = 2
-        const font = `700 ${height}px "Amatic SC"`
+        const font = `700 ${height}px "Amatic SC", ${CJK_FONT}`
 
         const canvas = document.createElement('canvas')
         canvas.style.position = 'fixed'

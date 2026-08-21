@@ -1,4 +1,5 @@
 import { InteractivePoints } from '../../InteractivePoints.js'
+import { t } from '../../i18n.js'
 import { Area } from './Area.js'
 
 export class EasterArea extends Area
@@ -14,7 +15,7 @@ export class EasterArea extends Area
     {
         this.interactivePoint = this.game.interactivePoints.create(
             this.references.items.get('interactivePoint')[0].position,
-            'Easter event',
+            t('world.easter'),
             InteractivePoints.ALIGN_RIGHT,
             InteractivePoints.STATE_CONCEALED,
             () =>

@@ -4,6 +4,7 @@ import { color, float, Fn, instancedArray, mix, normalWorld, positionGeometry, s
 import { InstancedGroup } from '../../InstancedGroup.js'
 import gsap from 'gsap'
 import { InteractivePoints } from '../../InteractivePoints.js'
+import { t, isZh } from '../../i18n.js'
 import { MeshDefaultMaterial } from '../../Materials/MeshDefaultMaterial.js'
 import { alea } from 'seedrandom'
 import { Area } from './Area.js'
@@ -270,7 +271,7 @@ export class CookieArea extends Area
     {
         this.game.interactivePoints.create(
             this.references.items.get('interactivePoint')[0].position,
-            'Accept cookie',
+            t('world.cookie'),
             InteractivePoints.ALIGN_RIGHT,
             InteractivePoints.STATE_CONCEALED,
             () =>
@@ -375,7 +376,7 @@ export class CookieArea extends Area
             if(!this.counter.initialised)
                 return
 
-            const formatedValue = this.counter.value.toLocaleString('en-US')
+            const formatedValue = this.counter.value.toLocaleString(isZh ? 'zh-CN' : 'en-US')
             
             // Canvas
             const textSize = context.measureText(formatedValue)

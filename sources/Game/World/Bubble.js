@@ -2,6 +2,7 @@ import * as THREE from 'three/webgpu'
 import { color, Fn, mix, texture, uniform, uv, vec2, vec4 } from 'three/tsl'
 import gsap from 'gsap'
 import { Game } from '../Game.js'
+import { CJK_FONT } from '../i18n.js'
 
 export class Bubble
 {
@@ -20,7 +21,7 @@ export class Bubble
         this.textWidth = 0
         this.textPaddingHorizontal = 10
         this.textOffsetVertical = 2
-        this.font = `700 ${this.height}px "Amatic SC"`
+        this.font = `700 ${this.height}px "Amatic SC", ${CJK_FONT}`
 
         this.group = new THREE.Group()
         this.group.rotation.reorder('YXZ')

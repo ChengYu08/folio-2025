@@ -1,5 +1,6 @@
 import * as THREE from 'three/webgpu'
 import { Game } from '../../Game.js'
+import { isZh, CJK_FONT, t } from '../../i18n.js'
 import { attribute, clamp, color, float, Fn, instancedArray, instanceIndex, luminance, max, min, mix, smoothstep, step, texture, uniform, uv, varying, vec2, vec3, vec4 } from 'three/tsl'
 import gsap from 'gsap'
 import { alea } from 'seedrandom'
@@ -37,11 +38,11 @@ export class AltarArea extends Area
 
         // Offline counter
         if(!this.game.server.connected)
-            this.updateText('...')
-            
+            this.updateText(t('altar.ellipsis'))
+
         this.game.server.events.on('disconnected', () =>
         {
-            this.updateText('...')
+            this.updateText(t('altar.ellipsis'))
         })
 
         // Debug
@@ -351,7 +352,7 @@ export class AltarArea extends Area
         const ratio = 1 / 4
         this.width = 256
         this.height = this.width * ratio
-        this.font = `700 ${this.height}px "Amatic SC"`
+        this.font = `700 ${this.height}px "Amatic SC", ${CJK_FONT}`
         
         const canvas = document.createElement('canvas')
         canvas.width = this.width
@@ -456,7 +457,7 @@ export class AltarArea extends Area
                 return
                 
             this.value = value
-            formatedValue = value.toLocaleString('en-US')
+            formatedValue = value.toLocaleString(isZh ? 'zh-CN' : 'en-US')
         }
 
         // Displaying text value

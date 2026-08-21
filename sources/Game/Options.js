@@ -1,4 +1,5 @@
 import { Game } from './Game.js'
+import { t } from './i18n.js'
 
 export class Options
 {
@@ -26,7 +27,7 @@ export class Options
     {
         const element = this.element.querySelector('.js-quality-toggle')
         const text = element.querySelector('span')
-        text.textContent = this.game.quality.level === 0 ? 'High' : 'Low'
+        text.textContent = this.game.quality.level === 0 ? t('options.quality.high') : t('options.quality.low')
 
         element.addEventListener('click', () =>
         {
@@ -35,7 +36,7 @@ export class Options
 
         this.game.quality.events.on('change', () =>
         {
-            text.textContent = this.game.quality.level === 0 ? 'High' : 'Low'
+            text.textContent = this.game.quality.level === 0 ? t('options.quality.high') : t('options.quality.low')
         })
     }
 
@@ -70,10 +71,10 @@ export class Options
             element.classList.add('is-danger')
 
             const text = element.querySelector('span')
-            text.textContent = 'WebGL'
+            text.textContent = t('options.renderer.webgl')
 
             const tooltip = element.querySelector('.js-tooltip')
-            tooltip.innerHTML = /* html */`Your browser is <strong>not compatible</strong> with WebGPU resulting in performance loss`
+            tooltip.innerHTML = t('options.renderer.webglTooltip')
         }
     }
 
@@ -90,17 +91,17 @@ export class Options
                 element.classList.add('is-success')
                 element.classList.remove('is-danger')
                 
-                text.textContent = 'Online'
+                text.textContent = t('options.server.online')
 
-                tooltip.innerHTML = /* html */`Enjoy the <strong>multiplayer</strong> features`
+                tooltip.innerHTML = t('options.server.onlineTooltip')
             }
             else
             {
                 element.classList.remove('is-success')
                 element.classList.add('is-danger')
-                text.textContent = 'Offline'
+                text.textContent = t('options.server.offline')
 
-                tooltip.innerHTML = /* html */`Should be back soon`
+                tooltip.innerHTML = t('options.server.offlineTooltip')
             }
         }
 

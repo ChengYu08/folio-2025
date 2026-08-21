@@ -1,4 +1,5 @@
 import * as THREE from 'three/webgpu'
+import { CJK_FONT } from './i18n.js'
 
 let top = 0
 export class TextCanvas
@@ -15,7 +16,9 @@ export class TextCanvas
     )
     {
         this.lines = []
-        this.font = `${fontWeight} ${fontSize * density}px "${fontFamily}"`
+        // Append a CJK fallback so Chinese glyphs render instead of tofu.
+        // English glyphs still come from the primary font first.
+        this.font = `${fontWeight} ${fontSize * density}px "${fontFamily}", ${CJK_FONT}`
         this.width = Math.ceil(width * density)
         this.height = Math.ceil(height * density)
         this.horizontalAlign = horizontalAlign

@@ -1,3 +1,19 @@
+import { isZh } from '../Game/i18n.js'
+
+// Role labels are translated; project titles, company and people names stay as
+// proper nouns. Shape (string vs array for role/titleSmall) is preserved so
+// ProjectsArea needs no changes.
+const roles =
+{
+    'developer': '开发者',
+    'formater': '排版',
+    'WebGL developer': 'WebGL 开发者',
+    'Front developer': '前端开发者',
+}
+
+const trRole = (r) => isZh ? (roles[r] ?? r) : r
+const trRoles = (r) => Array.isArray(r) ? r.map(trRole) : trRole(r)
+
 export default [
     {
         title: 'Three.js Journey',
@@ -5,7 +21,7 @@ export default [
         url: 'https://threejs-journey.com',
         attributes:
         {
-            role: [ 'developer', 'formater' ],
+            role: trRoles([ 'developer', 'formater' ]),
             with: [ 'Hervé Studio', 'Bonhomme Paris' ]
         },
         distinctions: [ 'fwa' ], // 'awwwards', 'fwa', 'cssda'
@@ -42,7 +58,7 @@ export default [
         url: 'https://anniversary.bonhommeparis.com',
         attributes:
         {
-            role: 'WebGL developer',
+            role: trRoles('WebGL developer'),
             with: 'Bonhomme Paris'
         },
         distinctions: [ 'awwwards', 'fwa' ],
@@ -59,7 +75,7 @@ export default [
         url: 'https://madbox.io',
         attributes:
         {
-            role: 'WebGL developer',
+            role: trRoles('WebGL developer'),
             at: 'Hervé Studio',
             with: 'Lei Xing'
         },
@@ -77,7 +93,7 @@ export default [
         url: 'https://www.luni.app',
         attributes:
         {
-            role: 'WebGL developer',
+            role: trRoles('WebGL developer'),
             at: 'Hervé Studio',
             with: 'Loïc Belaidremesal'
         },
@@ -96,7 +112,7 @@ export default [
         url: 'https://scout-omega.vercel.app',
         attributes:
         {
-            role: 'WebGL developer',
+            role: trRoles('WebGL developer'),
             at: 'Hervé Studio'
         },
         distinctions: [  ],
@@ -113,7 +129,7 @@ export default [
         url: 'https://prior.co.jp/discover/en',
         attributes:
         {
-            role: [ 'Front developer', 'WebGL developer' ],
+            role: trRoles([ 'Front developer', 'WebGL developer' ]),
             at: 'Immersive Garden'
         },
         distinctions: [ 'awwwards', 'cssda', 'fwa' ],
@@ -130,7 +146,7 @@ export default [
         url: 'https://www.orano.group/experience/innovation/en',
         attributes:
         {
-            role: [ 'Front developer', 'WebGL developer' ],
+            role: trRoles([ 'Front developer', 'WebGL developer' ]),
             at: 'Immersive Garden'
         },
         distinctions: [ 'awwwards', 'cssda', 'fwa' ],
@@ -147,7 +163,7 @@ export default [
         url: 'https://thenewmobileworkforce.imm-g-prod.com',
         attributes:
         {
-            role: [ 'WebGL developer' ],
+            role: trRoles([ 'WebGL developer' ]),
             at: 'Immersive Garden',
             with: [ 'Damien Doussaud', 'Quentin Leclercq' ]
         },

@@ -60,7 +60,7 @@ const text = `
 
 ╔═ Source code ═════════╗
 ║ The code is available on GitHub under MIT license. Even the Blender files are there, so have fun!
-║ https://github.com/brunosimon/folio-2025
+║ https://github.com/ChengYu08/folio-2025
 ║ For security reasons, I’m not sharing the server code, but the portfolio works without it.
 ╚═══════════════════════╝
 
@@ -69,7 +69,7 @@ const text = `
 ║ https://linktr.ee/Kounine
 ║ They are now under CC0 license, meaning you can do whatever you want with them!
 ║ Download them here.
-║ https://github.com/brunosimon/folio-2025/tree/main/static/sounds/musics
+║ https://github.com/ChengYu08/folio-2025/tree/main/static/sounds/musics
 ╚═══════════════════════╝
 
 ╔═ Some more links ═════╗

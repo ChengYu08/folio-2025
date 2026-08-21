@@ -1,5 +1,6 @@
 import * as THREE from 'three/webgpu'
 import { InteractivePoints } from '../../InteractivePoints.js'
+import { t } from '../../i18n.js'
 import { Area } from './Area.js'
 import { Fn, texture, uv, vec2, vec3, vec4 } from 'three/tsl'
 import gsap from 'gsap'
@@ -19,7 +20,7 @@ export class TimeMachineArea extends Area
     {
         this.interactivePoint = this.game.interactivePoints.create(
             this.references.items.get('interactivePoint')[0].position,
-            'Time Machine',
+            t('world.timeMachine'),
             InteractivePoints.ALIGN_RIGHT,
             InteractivePoints.STATE_CONCEALED,
             () =>

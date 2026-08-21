@@ -1,5 +1,6 @@
 import * as THREE from 'three/webgpu'
 import { Game } from '../Game.js'
+import { t } from '../i18n.js'
 import { billboarding, cameraPosition, color, Fn, instanceIndex, log, min, mix, modelViewMatrix, mul, normalWorld, positionGeometry, positionViewDirection, positionWorld, smoothstep, storage, texture, time, uv, vec2, vec3, vec4 } from 'three/tsl'
 import { hash } from 'three/tsl'
 import gsap from 'gsap'
@@ -340,7 +341,7 @@ export class Whispers
         this.menu.input.addEventListener('input', () =>
         {
             const sanatized = sanatize(this.menu.input.value, false, true, true)
-            this.menu.previewMessageText.textContent = sanatized.length ? sanatized : 'Your message here'
+            this.menu.previewMessageText.textContent = sanatized.length ? sanatized : t('whispers.previewMessage')
 
             if(this.menu.input.textContent !== sanatized)
                 this.menu.input.value = sanatized
@@ -363,7 +364,7 @@ export class Whispers
         this.menu.previewMessageText.addEventListener('blur', () =>
         {
             const sanatized = sanatize(this.menu.input.value, true, true, true)
-            this.menu.previewMessageText.textContent = sanatized !== '' ? sanatized : 'Your message here'
+            this.menu.previewMessageText.textContent = sanatized !== '' ? sanatized : t('whispers.previewMessage')
             updateGroup()
         })
 
@@ -382,7 +383,7 @@ export class Whispers
 
         this.menu.instance.events.on('closed', () =>
         {
-            this.menu.previewMessageText.textContent = 'Your message here'
+            this.menu.previewMessageText.textContent = t('whispers.previewMessage')
             this.menu.input.value = ''
             updateGroup()
             this.menu.inputFlag.close()
