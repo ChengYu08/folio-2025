@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 # Deploy the built site to /www/wwwroot/yuyiyi.asia
 #
-# Runs on the server. By default it rebuilds (npm run build) then rsyncs the
-# output to /www/wwwroot/yuyiyi.asia. Pass --no-build to deploy the existing
-# build without rebuilding.
+# Runs on the server. By default it deploys the existing build at
+# yuyiyi.asia/ via rsync WITHOUT rebuilding — build is expected to be
+# done already (e.g. locally or in CI). Pass --build to rebuild first.
 #
 # Usage:
-#   ./scripts/deploy.sh            # build + deploy
-#   ./scripts/deploy.sh --no-build # deploy existing build only
+#   ./scripts/deploy.sh          # deploy existing build only (no node)
+#   ./scripts/deploy.sh --build  # rebuild (npm run build) then deploy
 #
-# Requires: rsync, npm. If you run it as root it also fixes ownership to
-# www:www (the BaoTa/宝塔 panel default). Otherwise make sure the current user
-# can write to /www/wwwroot/yuyiyi.asia.
+# Requires: rsync. With --build also requires npm. If you run it as root
+# it also fixes ownership to www:www (the BaoTa/宝塔 panel default).
+# Otherwise make sure the current user can write to /www/wwwroot/yuyiyi.asia.
 
 set -euo pipefail
 
@@ -23,9 +23,10 @@ SRC="$REPO_ROOT/yuyiyi.asia"
 DEST="/www/wwwroot/yuyiyi.asia"
 
 # --- Argument parsing -------------------------------------------------------
-BUILD=true
+BUILD=false
 for arg in "$@"; do
     case "$arg" in
+        --build) BUILD=true ;;
         --no-build|--skip-build) BUILD=false ;;
         -h|--help)
             sed -n '2,15p' "$0"
@@ -46,7 +47,7 @@ fi
 
 if [[ ! -d "$SRC" ]]; then
     echo "ERROR: build output not found at $SRC" >&2
-    echo "Run 'npm run build' first, or drop the --no-build flag." >&2
+    echo "Run 'npm run build' first, or pass --build to this script." >&2
     exit 1
 fi
 
